@@ -1,0 +1,17 @@
+.PlaySwitch {
+  &.play {
+    width: 65px;
+    height: 90px;
+    border-radius: 0px;
+
+    &.switchOn {
+      background: none;
+      border: 4px solid #000;
+    }
+
+    &.switchOff {
+      background: #bd1c4e;
+      border: 4px solid #000;
+    }
+  }
+}

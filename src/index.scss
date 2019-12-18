@@ -1,0 +1,22 @@
+@import-normalize;
+
+* {
+  outline: none;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Fugue";
+  text-transform: uppercase;
+  font-weight: medium;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #fff;
+  color: #1c1c1c;
+
+  .app {
+    display: flex;
+    justify-content: space-between;
+  }
+}

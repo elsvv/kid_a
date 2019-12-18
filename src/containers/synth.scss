@@ -1,0 +1,175 @@
+.synthsContainer {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .AmbientSynth {
+    .ambientFirstRow {
+      display: flex;
+
+      .ambientEnvelope {
+        padding: 10px;
+        border: 4px solid black;
+        border-left: none;
+      }
+    }
+
+    .ambientLoops {
+      border: 4px solid #000;
+      border-top: none;
+      display: flex;
+      width: 70%;
+      justify-content: space-between;
+
+      .mainControls {
+        width: 225px;
+        padding: 10px;
+        border-right: 4px solid #000;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+
+      .loops {
+        display: flex;
+        justify-content: space-between;
+        width: 650px;
+        margin: 20px 25px;
+
+        .loop {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          h2 {
+            font-size: 14px;
+            margin-bottom: 7px;
+          }
+
+          &.loop1 {
+            .switchOff {
+              background: #ffe107;
+            }
+          }
+
+          &.loop2 {
+            .switchOff {
+              background: #1ccfa2;
+            }
+          }
+
+          &.loop3 {
+            .switchOff {
+              background: #cc00bb;
+            }
+          }
+
+          &.loop4 {
+            .switchOff {
+              background: #00a5b2;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .rhSynth {
+    display: flex;
+
+    .rhLoops {
+      border: 4px solid #000;
+      display: flex;
+      width: 70%;
+      justify-content: space-between;
+
+      .mainControls {
+        width: 225px;
+        padding: 10px;
+        border-right: 4px solid #000;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+
+      .playSynth {
+        margin: 20px 25px 20px 25px;
+
+        h2 {
+          font-size: 14px;
+          margin-bottom: 7px;
+          text-align: center;
+        }
+      }
+
+      .loops {
+        display: flex;
+        justify-content: space-between;
+        width: 360px;
+        margin: 20px 25px;
+
+        .loop {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          h2 {
+            font-size: 14px;
+            margin-bottom: 7px;
+          }
+
+          &.loop1 {
+            .switchOff {
+              background: #ffe107;
+            }
+          }
+
+          &.loop2 {
+            .switchOff {
+              background: #1ccfa2;
+            }
+          }
+
+          &.loop3 {
+            .switchOff {
+              background: #cc00bb;
+            }
+          }
+
+          &.loop4 {
+            .switchOff {
+              background: #00a5b2;
+            }
+          }
+        }
+      }
+    }
+
+    .rhPresets {
+      width: 392px;
+    }
+  }
+
+  .ambientSynth {
+    height: 300px;
+  }
+}
+
+.effectsContainer {
+  display: flex;
+
+  .rhEffects {
+    border: 4px solid #000;
+    display: flex;
+    flex-wrap: wrap;
+    border-right: none;
+  }
+
+  .ambientEffects {
+  }
+
+  .keyEffects {
+  }
+}
