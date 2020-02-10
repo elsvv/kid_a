@@ -6,6 +6,7 @@ import "./synth.scss";
 import RadioheadLooper from "../components/synthesizers/RadioheadLooper";
 import KeySynth from "../components/synthesizers/KeySynth";
 import AmbientSynth from "../components/synthesizers/AmbientSynth";
+import ThreeContainer from "../threeComponents/ThreeContainer/ThreeContainer.jsx";
 
 export default class Synth extends React.Component {
   constructor(props) {
@@ -39,6 +40,7 @@ export default class Synth extends React.Component {
     let { bpm, viewSet } = this.state;
     return (
       <div className="app">
+        <ThreeContainer />
         <div className="synthsContainer">
           <RadioheadLooper bpmChange={this.bpmChange} bpm={bpm} />
           <AmbientSynth
