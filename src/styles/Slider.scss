@@ -1,0 +1,26 @@
+.Slider {
+  position: relative;
+  width: 100%;
+  height: 32px;
+  border-radius: 60px;
+  background: #000;
+  margin-top: 20px;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  .thumb {
+    position: absolute;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    background: #fff;
+    transform: translate(-50%);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

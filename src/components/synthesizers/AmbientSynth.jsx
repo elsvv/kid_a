@@ -3,10 +3,8 @@ import Tone from "tone";
 
 import Pedalboard from "../effects/Pedalboard";
 import EnvelopeAmb from "../controls/EnvelopeAmb";
-import Knob from "../controls/Knob";
 import Slider from "../controls/Slider";
 import PlaySwitch from "../controls/PlaySwitch";
-import LoopsContainer from "../controls/LoopsContainer";
 
 export default class AmbientSynth extends React.Component {
   constructor(props) {
@@ -14,115 +12,115 @@ export default class AmbientSynth extends React.Component {
 
     let ambSynth1 = new Tone.Synth({
       oscillator: {
-        type: "sine"
+        type: "sine",
       },
       envelope: {
         attack: 1,
         decay: 1,
         sustain: 0.4,
-        release: 1
-      }
+        release: 1,
+      },
     });
 
     let ambSynth2 = new Tone.Synth({
       oscillator: {
-        type: "sine"
+        type: "sine",
       },
       envelope: {
         attack: 1,
         decay: 1,
         sustain: 0.4,
-        release: 1
-      }
+        release: 1,
+      },
     });
 
     let ambSynth3 = new Tone.Synth({
       oscillator: {
-        type: "sine"
+        type: "sine",
       },
       envelope: {
         attack: 1,
         decay: 1,
         sustain: 0.4,
-        release: 1
-      }
+        release: 1,
+      },
     });
 
     let ambSynth4 = new Tone.Synth({
       oscillator: {
-        type: "sine"
+        type: "sine",
       },
       envelope: {
         attack: 1,
         decay: 1,
         sustain: 0.4,
-        release: 1
-      }
+        release: 1,
+      },
     });
 
     let ambSynth5 = new Tone.Synth({
       oscillator: {
-        type: "sine"
+        type: "sine",
       },
       envelope: {
         attack: 1,
         decay: 1,
         sustain: 0.4,
-        release: 1
-      }
+        release: 1,
+      },
     });
 
     let ambSynth6 = new Tone.Synth({
       oscillator: {
-        type: "sine"
+        type: "sine",
       },
       envelope: {
         attack: 1,
         decay: 1,
         sustain: 0.4,
-        release: 1
-      }
+        release: 1,
+      },
     });
 
     let ambSynth7 = new Tone.Synth({
       oscillator: {
-        type: "sine"
+        type: "sine",
       },
       envelope: {
         attack: 1,
         decay: 1,
         sustain: 0.4,
-        release: 1
-      }
+        release: 1,
+      },
     });
 
-    let tuneNow = ["C5", "D5", "E5", "F5", "G5", "A5", "B5"];
+    let tuneNow = ["F4", "G4", "A4", "A#4", "C5", "D5", "E5"];
 
-    let loop1 = new Tone.Loop(time => {
+    let loop1 = new Tone.Loop((time) => {
       ambSynth1.triggerAttackRelease(tuneNow[0], "2n", time);
     }, "8n");
 
-    let loop2 = new Tone.Loop(time => {
+    let loop2 = new Tone.Loop((time) => {
       ambSynth2.triggerAttackRelease(tuneNow[1], "4n", time);
     }, "8n");
 
-    let loop3 = new Tone.Loop(time => {
+    let loop3 = new Tone.Loop((time) => {
       ambSynth3.triggerAttackRelease(tuneNow[2], "4n", time);
     }, "16n");
 
-    let loop4 = new Tone.Loop(time => {
+    let loop4 = new Tone.Loop((time) => {
       ambSynth4.triggerAttackRelease(tuneNow[3], "2n", time);
     }, "2n");
 
-    let loop5 = new Tone.Loop(time => {
+    let loop5 = new Tone.Loop((time) => {
       ambSynth5.triggerAttackRelease(tuneNow[4], "4n", time);
     }, "8n");
 
-    let loop6 = new Tone.Loop(time => {
+    let loop6 = new Tone.Loop((time) => {
       ambSynth6.triggerAttackRelease(tuneNow[5], "4n", time);
     }, "16n");
 
-    let loop7 = new Tone.Loop(time => {
+    let loop7 = new Tone.Loop((time) => {
       ambSynth7.triggerAttackRelease(tuneNow[6], "2n", time);
     }, "2n");
 
@@ -218,35 +216,35 @@ export default class AmbientSynth extends React.Component {
         effect: ambChorus,
         wet: defaultWetValue,
         on: false,
-        frTemp: 0
+        frTemp: 0,
       },
       feedbackDelay: {
         name: "feedbackDelay",
         effect: ambFeedbackDelay,
         wet: defaultWetValue,
         on: false,
-        frTemp: 0
+        frTemp: 0,
       },
       jcReverb: {
         name: "jcReverb",
         effect: ambJcReverb,
         wet: defaultWetValue,
         on: false,
-        frTemp: 0
+        frTemp: 0,
       },
       vibrato: {
         name: "vibrato",
         effect: ambVibrato,
         wet: defaultWetValue,
         on: false,
-        frTemp: 0
+        frTemp: 0,
       },
       distortion: {
         name: "distortion",
         effect: ambDistortion,
         wet: defaultWetValue,
         on: false,
-        frTemp: 0
+        frTemp: 0,
       },
       ambSynth1,
       ambSynth2,
@@ -259,36 +257,36 @@ export default class AmbientSynth extends React.Component {
       tuneNow,
       loop1: {
         loop: loop1,
-        on: false
+        on: false,
       },
       loop2: {
         loop: loop2,
-        on: false
+        on: false,
       },
       loop3: {
         loop: loop3,
-        on: false
+        on: false,
       },
       loop4: {
         loop: loop4,
-        on: false
+        on: false,
       },
       loop5: {
         loop: loop5,
-        on: false
+        on: false,
       },
       loop6: {
         loop: loop6,
-        on: false
+        on: false,
       },
       loop7: {
         loop: loop7,
-        on: false
-      }
+        on: false,
+      },
     };
   }
 
-  changeWaveType = value => {
+  changeWaveType = (value) => {
     let {
       ambSynth1,
       ambSynth2,
@@ -296,7 +294,7 @@ export default class AmbientSynth extends React.Component {
       ambSynth4,
       ambSynth5,
       ambSynth6,
-      ambSynth7
+      ambSynth7,
     } = this.state;
 
     ambSynth1.voice.oscillator.type = value;
@@ -314,11 +312,11 @@ export default class AmbientSynth extends React.Component {
       ambSynth4,
       ambSynth5,
       ambSynth6,
-      ambSynth7
+      ambSynth7,
     });
   };
 
-  toggleEffect = effectName => {
+  toggleEffect = (effectName) => {
     console.log(effectName);
     let { effect, wet, on, name } = this.state[effectName];
 
@@ -326,27 +324,24 @@ export default class AmbientSynth extends React.Component {
     on = !on;
 
     this.setState({
-      [`${effectName}`]: { effect, wet, on, name }
+      [`${effectName}`]: { effect, wet, on, name },
     });
   };
 
   handleVolume = (a, b, value) => {
     let { gain } = this.state;
     let volume = value;
-    console.log("old", gain.gain.value);
-    console.log("comming vol", volume);
     gain.gain.value = volume;
-    console.log("new", gain.gain.value);
     this.setState({
-      gain
+      gain,
     });
   };
 
   handleValueChange = (effectName, param, value) => {
     let { effect, wet, on, name } = this.state[effectName];
 
-    if (effect[param] == "wet") {
-      effect[param].value = on == true ? value : 0;
+    if (effect[param] === "wet") {
+      effect[param].value = on === true ? value : 0;
       wet = value;
     } else {
       if (typeof effect[`${param}`] == "object") {
@@ -361,8 +356,8 @@ export default class AmbientSynth extends React.Component {
         name,
         effect,
         wet,
-        on
-      }
+        on,
+      },
     });
   };
 
@@ -380,8 +375,8 @@ export default class AmbientSynth extends React.Component {
         name,
         effect,
         wet,
-        on
-      }
+        on,
+      },
     });
   };
 
@@ -393,7 +388,7 @@ export default class AmbientSynth extends React.Component {
       ambSynth4,
       ambSynth5,
       ambSynth6,
-      ambSynth7
+      ambSynth7,
     } = this.state;
 
     ambSynth1.envelope[param] = value;
@@ -408,8 +403,7 @@ export default class AmbientSynth extends React.Component {
   };
 
   // LOOP
-  toggleLoop = loopName => {
-    let { bpm } = this.props;
+  toggleLoop = (loopName) => {
     let { loop, on } = this.state[loopName];
 
     on ? loop.stop() : loop.start();
@@ -417,8 +411,8 @@ export default class AmbientSynth extends React.Component {
     this.setState({
       [`${loopName}`]: {
         loop: loop,
-        on: !on
-      }
+        on: !on,
+      },
     });
 
     Tone.Transport.bpm.value = this.props.bpm;
@@ -426,22 +420,7 @@ export default class AmbientSynth extends React.Component {
   };
 
   render() {
-    let {
-      ambSynth1,
-      ambSynth2,
-      ambSynth3,
-      ambSynth4,
-      ambSynth5,
-      ambSynth6,
-      ambSynth7,
-      loop1,
-      loop2,
-      loop3,
-      loop4,
-      loop5,
-      loop6,
-      loop7
-    } = this.state;
+    let { loop1, loop2, loop3, loop4, loop5, loop6, loop7 } = this.state;
 
     return (
       <div className="AmbientSynth">
@@ -460,18 +439,77 @@ export default class AmbientSynth extends React.Component {
               </div>
             </div>
 
-            <LoopsContainer
-              loops={[loop1, loop2, loop3, loop4, loop5, loop6, loop7]}
-              toggleLoop={this.toggleLoop}
-            />
-          </div>
+            <div className="ambientEnvelope">
+              <EnvelopeAmb
+                handleEnvelope={this.handleEnvelope}
+                env={this.state.ambSynth1.envelope}
+                name="ambSynth"
+              />
+            </div>
+            <div className="loops">
+              <div className="loop loop1">
+                <h2>Loop 1</h2>
+                <PlaySwitch
+                  name="play"
+                  value={loop1.on}
+                  handleToggleClick={() => this.toggleLoop("loop1")}
+                />
+              </div>
 
-          <div className="ambientEnvelope">
-            <EnvelopeAmb
-              handleEnvelope={this.handleEnvelope}
-              env={this.state.ambSynth1.envelope}
-              name="ambSynth"
-            />
+              <div className="loop loop2">
+                <h2>Loop 2</h2>
+                <PlaySwitch
+                  name="play"
+                  value={loop2.on}
+                  handleToggleClick={() => this.toggleLoop("loop2")}
+                />
+              </div>
+
+              <div className="loop loop3">
+                <h2>Loop 3</h2>
+                <PlaySwitch
+                  name="play"
+                  value={loop3.on}
+                  handleToggleClick={() => this.toggleLoop("loop3")}
+                />
+              </div>
+
+              <div className="loop loop1">
+                <h2>Loop 4</h2>
+                <PlaySwitch
+                  name="play"
+                  value={loop4.on}
+                  handleToggleClick={() => this.toggleLoop("loop4")}
+                />
+              </div>
+
+              <div className="loop loop2">
+                <h2>Loop 5</h2>
+                <PlaySwitch
+                  name="play"
+                  value={loop5.on}
+                  handleToggleClick={() => this.toggleLoop("loop5")}
+                />
+              </div>
+
+              <div className="loop loop4">
+                <h2>Loop 6</h2>
+                <PlaySwitch
+                  name="play"
+                  value={loop6.on}
+                  handleToggleClick={() => this.toggleLoop("loop6")}
+                />
+              </div>
+
+              <div className="loop loop3">
+                <h2>Loop 7</h2>
+                <PlaySwitch
+                  name="play"
+                  value={loop7.on}
+                  handleToggleClick={() => this.toggleLoop("loop7")}
+                />
+              </div>
+            </div>
           </div>
         </div>
 

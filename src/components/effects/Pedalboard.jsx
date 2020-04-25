@@ -1,12 +1,9 @@
-import React from "react";
-
-import "./Effect.scss";
-
-import Chorus from "./Chorus";
-import Distortion from "./Distortion";
-import JcReverb from "./JcReverb";
-import FeedbackDelay from "./FeedbackDelay";
-import Vibrato from "./Vibrato";
+import React from 'react'
+import Chorus from './Chorus'
+import Distortion from './Distortion'
+import JcReverb from './JcReverb'
+import FeedbackDelay from './FeedbackDelay'
+import Vibrato from './Vibrato'
 
 export default ({ synth, handler, subHandler, toggleEffect }) => {
   return (
@@ -47,5 +44,5 @@ export default ({ synth, handler, subHandler, toggleEffect }) => {
         toggleEffect={toggleEffect}
       />
     </div>
-  );
-};
+  )
+}

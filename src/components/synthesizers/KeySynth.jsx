@@ -1,15 +1,7 @@
 import React from "react";
 import Tone from "tone";
 
-// import * as effects from '../../tunes/effects'
-// import * as synths from '../../tunes/synths'
-
 import Keyboard from "../controls/Keyboard";
-import Pedalboard from "../effects/Pedalboard";
-import Envelope from "../controls/Envelope";
-import Knob from "../controls/Knob";
-import ToggleView from "../controls/ToggleView";
-import Slider from "../controls/Slider";
 
 export default class KeySynth extends React.Component {
   constructor(props) {
@@ -17,26 +9,24 @@ export default class KeySynth extends React.Component {
 
     let keySynth = new Tone.Synth({
       oscillator: {
-        type: "sine"
+        type: "sine",
       },
       envelope: {
         attack: 2,
         decay: 1,
         sustain: 0.4,
-        release: 1
-      }
+        release: 1,
+      },
     });
 
     let gain = new Tone.Gain(0.5);
-
-    let defaultWetValue = 0;
 
     keySynth.chain(gain, Tone.Master);
 
     this.state = {
       keySynth,
       gain,
-      currentNote: undefined
+      currentNote: undefined,
     };
   }
 
@@ -46,10 +36,9 @@ export default class KeySynth extends React.Component {
     keySynth.triggerAttack(`${note}${octave}`);
     currentNote = note;
 
-    console.log("Down");
     this.setState({
       keySynth,
-      currentNote
+      currentNote,
     });
   };
 
@@ -59,24 +48,22 @@ export default class KeySynth extends React.Component {
     keySynth.triggerRelease();
     currentNote = undefined;
 
-    console.log("Up");
-
     this.setState({
       keySynth,
-      currentNote
+      currentNote,
     });
   };
 
-  changeWaveType = value => {
+  changeWaveType = (value) => {
     let { keySynth } = this.state;
     keySynth.oscillator.type = value;
 
     this.setState({
-      keySynth
+      keySynth,
     });
   };
 
-  toggleEffect = effectName => {
+  toggleEffect = (effectName) => {
     console.log(effectName);
     let { effect, wet, on, name } = this.state[effectName];
 
@@ -84,19 +71,16 @@ export default class KeySynth extends React.Component {
     on = !on;
 
     this.setState({
-      [`${effectName}`]: { effect, wet, on, name }
+      [`${effectName}`]: { effect, wet, on, name },
     });
   };
 
   handleVolume = (a, b, value) => {
     let { gain } = this.state;
     let volume = value;
-    console.log("old", gain.gain.value);
-    console.log("comming vol", volume);
     gain.gain.value = volume;
-    console.log("new", gain.gain.value);
     this.setState({
-      gain
+      gain,
     });
   };
 

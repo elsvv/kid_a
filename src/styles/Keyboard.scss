@@ -1,0 +1,113 @@
+.keySynth {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  border-top: 1px solid black;
+
+  .keyContainer {
+    width: 70%;
+
+    .keyboard {
+      display: flex;
+      justify-content: space-between;
+      padding: 25px;
+      border: 1px solid #000;
+      border-top: none;
+
+      div {
+        width: 60px;
+        height: 200px;
+        text-align: center;
+        line-height: 200px;
+        cursor: pointer;
+
+        &.pressed {
+          background: #e94f1e;
+          color: #fff;
+        }
+
+        &.white {
+          background: #fff;
+          border: 1px solid #000;
+          border-radius: 0 0px 4px 4px;
+          transition: background ease-in 0.1s;
+
+          &#E {
+            border-right: none;
+          }
+
+          &:hover {
+            background: transparent;
+          }
+
+          &.pressed {
+            background: #e94f1e;
+            color: #fff;
+          }
+        }
+
+        &.black {
+          background: #000;
+          color: #fff;
+          width: 45px;
+          height: 160px;
+          border-bottom: 1px solid #000;
+          border-top: 1px solid #000;
+          transition: background ease-in 0.1s;
+
+          &:hover {
+            background: transparent;
+          }
+
+          &.pressed {
+            background: #e94f1e;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  .keyPresets {
+    border-bottom: 1px solid #000;
+    width: 100%;
+    height: 251px;
+    display: flex;
+    align-items: center;
+
+    .keyWaves {
+      display: flex;
+      flex-direction: column;
+      width: 40%;
+      margin: 0 50px;
+    }
+
+    .keyControls {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      margin: 0px 50px;
+      justify-content: space-around;
+
+      input {
+        width: 90px;
+        height: 90px;
+        padding: 10px;
+        padding-left: 30px;
+        font-size: 32px;
+        text-align: center;
+        border: none;
+        font-family: "Digital Dream";
+        color: #fff;
+        font-weight: bold;
+        background: #000;
+        margin-right: 15px;
+        border-radius: 50%;
+      }
+
+      .keyVolume {
+        width: 150px;
+      }
+    }
+  }
+}

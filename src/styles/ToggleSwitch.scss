@@ -1,0 +1,32 @@
+.toggleContainer {
+  position: relative;
+  bottom: 30px;
+  right: 80px;
+
+  .ToggleSwitch {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    margin: auto;
+    position: relative;
+
+    &.on,
+    &:hover {
+      background: #e94f1e;
+      cursor: pointer;
+      border: 1px solid #000;
+    }
+
+    .toggleSwitchStroke {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid #000;
+    }
+  }
+}

@@ -3,12 +3,6 @@ import Tone from "tone";
 
 import BpmSlider from "../controls/BpmSlider";
 
-import * as effects from "../../tunes/effects";
-import * as synths from "../../tunes/synths";
-
-import Pedalboard from "../effects/Pedalboard";
-import EnvelopeAmb from "../controls/EnvelopeAmb";
-import Knob from "../controls/Knob";
 import Slider from "../controls/Slider";
 import PlaySwitch from "../controls/PlaySwitch";
 
@@ -22,118 +16,118 @@ export default class RadioheadLooper extends React.Component {
         count: 3,
         spread: 30,
         phase: 10,
-        fadeIn: 4
+        fadeIn: 4,
       },
       envelope: {
         attack: 0.3,
         decay: 1,
         sustain: 1,
         release: 5,
-        attackCurve: "exponential"
-      }
+        attackCurve: "exponential",
+      },
     });
 
     let part1 = new Tone.Part(
-      function(time, event) {
+      function (time, event) {
         rhSynth.triggerAttackRelease(event.note, event.dur, time);
       },
       [
         {
           time: "0:0:0",
-          note: "E4",
+          note: "A#4",
           velocity: 1,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "0:1:0",
-          note: "G3",
+          note: "D5",
           velocity: 1,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "0:2:0",
-          note: "C4",
+          note: "A5",
           velocity: 1,
-          dur: "4n"
+          dur: "2n",
         },
         {
           time: "0:3:0",
-          note: "G3",
-          velocity: 0.1,
-          dur: "4n"
+          note: "D6",
+          velocity: 1,
+          dur: "4n",
         },
         {
           time: "1:0:0",
-          note: "E4",
-          velocity: 0.3,
-          dur: "4n"
+          note: "A#5",
+          velocity: 1,
+          dur: "4n",
         },
         {
           time: "1:1:0",
-          note: "G3",
-          velocity: 0.3,
-          dur: "4n"
+          note: "C5",
+          velocity: 1,
+          dur: "4n",
         },
         {
           time: "1:2:0",
-          note: "C4",
-          velocity: 0.3,
-          dur: "4n"
+          note: "F5",
+          velocity: 1,
+          dur: "4n",
         },
         {
           time: "1:3:0",
-          note: "G3",
-          velocity: 0.3,
-          dur: "4n"
+          note: "F6",
+          velocity: 1,
+          dur: "4n",
         },
         {
           time: "2:0:0",
-          note: "E4",
-          velocity: 0.3,
-          dur: "4n"
+          note: "G5",
+          velocity: 1,
+          dur: "4n",
         },
         {
           time: "2:1:0",
-          note: "G3",
-          velocity: 0.3,
-          dur: "4n"
+          note: "E5",
+          velocity: 1,
+          dur: "4n",
         },
         {
           time: "2:2:0",
-          note: "C4",
-          velocity: 0.3,
-          dur: "4n"
+          note: "A#5",
+          velocity: 1,
+          dur: "4n",
         },
         {
           time: "2:3:0",
-          note: "G3",
-          velocity: 0.3,
-          dur: "4n"
+          note: "G6",
+          velocity: 1,
+          dur: "4n",
         },
         {
           time: "3:0:0",
-          note: "G#3",
-          velocity: 0.3,
-          dur: "4n"
+          note: "F4",
+          velocity: 1,
+          dur: "4n",
         },
         {
           time: "3:1:0",
-          note: "A#3",
-          velocity: 0.3,
-          dur: "4n"
+          note: "C5",
+          velocity: 1,
+          dur: "4n",
         },
         {
           time: "3:2:0",
-          note: "C4",
+          note: "G4",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "3:3:0",
-          note: "D4",
+          note: "D5",
           velocity: 0.3,
-          dur: "4n"
-        }
+          dur: "4n",
+        },
       ]
     );
 
@@ -141,106 +135,94 @@ export default class RadioheadLooper extends React.Component {
     part1.loopEnd = "4m";
 
     let part2 = new Tone.Part(
-      function(time, event) {
+      function (time, event) {
         rhSynth.triggerAttackRelease(event.note, event.dur, time);
       },
       [
         {
           time: "0:0:0",
-          note: "E4",
-          velocity: 1,
-          dur: "4n"
-        },
-        {
-          time: "0:1:0",
-          note: "F3",
-          velocity: 1,
-          dur: "4n"
+          note: "A2",
+          velocity: 0.3,
+          dur: "2n",
         },
         {
           time: "0:2:0",
-          note: "C4",
-          velocity: 1,
-          dur: "4n"
+          note: "A#2",
+          velocity: 0.3,
+          dur: "4n",
         },
         {
           time: "0:3:0",
-          note: "F3",
-          velocity: 0.1,
-          dur: "4n"
-        },
-        {
-          time: "1:0:0",
-          note: "E4",
-          velocity: 0.3,
-          dur: "4n"
+          note: "D3",
+          velocity: 0.5,
+          dur: "2n",
         },
         {
           time: "1:1:0",
-          note: "F3",
-          velocity: 0.3,
-          dur: "4n"
+          note: "A3",
+          velocity: 1,
+          dur: "2n",
         },
         {
           time: "1:2:0",
-          note: "C4",
-          velocity: 0.3,
-          dur: "4n"
+          note: "A3",
+          velocity: 1,
+          dur: "4n",
         },
         {
           time: "1:3:0",
-          note: "F3",
-          velocity: 0.3,
-          dur: "4n"
+          note: "F6",
+          velocity: 1,
+          dur: "4n",
         },
         {
           time: "2:0:0",
-          note: "E4",
-          velocity: 0.3,
-          dur: "4n"
+          note: "G5",
+          velocity: 1,
+          dur: "4n",
         },
         {
           time: "2:1:0",
-          note: "F3",
-          velocity: 0.3,
-          dur: "4n"
+          note: "E5",
+          velocity: 1,
+          dur: "4n",
         },
         {
           time: "2:2:0",
-          note: "C4",
-          velocity: 0.3,
-          dur: "4n"
+          note: "A#5",
+          velocity: 1,
+          dur: "4n",
         },
         {
           time: "2:3:0",
-          note: "F3",
-          velocity: 0.3,
-          dur: "4n"
+          note: "G6",
+          velocity: 1,
+          dur: "4n",
         },
         {
           time: "3:0:0",
-          note: "E4",
-          velocity: 0.3,
-          dur: "4n"
+          note: "F4",
+          velocity: 1,
+          dur: "4n",
         },
         {
           time: "3:1:0",
-          note: "F3",
-          velocity: 0.3,
-          dur: "4n"
+          note: "C5",
+          velocity: 1,
+          dur: "4n",
         },
         {
           time: "3:2:0",
-          note: "C4",
+          note: "G4",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "3:3:0",
-          note: "F3",
+          note: "D5",
           velocity: 0.3,
-          dur: "4n"
-        }
+          dur: "4n",
+        },
       ]
     );
 
@@ -248,7 +230,7 @@ export default class RadioheadLooper extends React.Component {
     part2.loopEnd = "4m";
 
     let part3 = new Tone.Part(
-      function(time, event) {
+      function (time, event) {
         rhSynth.triggerAttackRelease(event.note, event.dur, time);
       },
       [
@@ -256,98 +238,98 @@ export default class RadioheadLooper extends React.Component {
           time: "0:0:0",
           note: "D4",
           velocity: 1,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "0:1:0",
           note: "F3",
           velocity: 1,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "0:2:0",
           note: "A3",
           velocity: 1,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "0:3:0",
           note: "F3",
           velocity: 0.1,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "1:0:0",
           note: "D4",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "1:1:0",
           note: "F3",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "1:2:0",
           note: "A3",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "1:3:0",
           note: "F3",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "2:0:0",
           note: "D5",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "2:1:0",
           note: "F4",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "2:2:0",
           note: "A4",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "2:3:0",
           note: "F4",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "3:0:0",
           note: "D5",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "3:1:0",
           note: "F4",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "3:2:0",
           note: "A4",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "3:3:0",
           note: "F4",
           velocity: 0.3,
-          dur: "4n"
-        }
+          dur: "4n",
+        },
       ]
     );
 
@@ -355,7 +337,7 @@ export default class RadioheadLooper extends React.Component {
     part3.loopEnd = "4m";
 
     let part4 = new Tone.Part(
-      function(time, event) {
+      function (time, event) {
         rhSynth.triggerAttackRelease(event.note, event.dur, time);
       },
       [
@@ -363,98 +345,98 @@ export default class RadioheadLooper extends React.Component {
           time: "0:0:0",
           note: "D4",
           velocity: 1,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "0:1:0",
           note: "G4",
           velocity: 1,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "0:2:0",
           note: "B4",
           velocity: 1,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "0:3:0",
           note: "G4",
           velocity: 0.1,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "1:0:0",
           note: "D4",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "1:1:0",
           note: "G5",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "1:2:0",
           note: "B4",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "1:3:0",
           note: "G5",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "2:0:0",
           note: "D5",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "2:1:0",
           note: "G6",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "2:2:0",
           note: "B5",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "2:3:0",
           note: "G4",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "3:0:0",
           note: "D5",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "3:1:0",
           note: "G4",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "3:2:0",
           note: "B4",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "3:3:0",
           note: "G4",
           velocity: 0.3,
-          dur: "4n"
-        }
+          dur: "4n",
+        },
       ]
     );
 
@@ -462,7 +444,7 @@ export default class RadioheadLooper extends React.Component {
     part4.loopEnd = "4m";
 
     let part5 = new Tone.Part(
-      function(time, event) {
+      function (time, event) {
         rhSynth.triggerAttackRelease(event.note, event.dur, time);
       },
       [
@@ -470,98 +452,98 @@ export default class RadioheadLooper extends React.Component {
           time: "0:0:0",
           note: "F4",
           velocity: 1,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "0:1:0",
           note: "E4",
           velocity: 1,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "0:2:0",
           note: "D4",
           velocity: 1,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "0:3:0",
           note: "E5",
           velocity: 0.1,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "1:0:0",
           note: "D5",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "1:1:0",
           note: "C5",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "1:2:0",
           note: "G4",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "1:3:0",
           note: "C4",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "2:0:0",
           note: "F4",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "2:1:0",
           note: "E4",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "2:2:0",
           note: "B4",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "2:3:0",
           note: "A4",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "3:0:0",
           note: "C5",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "3:1:0",
           note: "D4",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "3:2:0",
           note: "E4",
           velocity: 0.3,
-          dur: "4n"
+          dur: "4n",
         },
         {
           time: "3:3:0",
           note: "C4",
           velocity: 0.3,
-          dur: "4n"
-        }
+          dur: "4n",
+        },
       ]
     );
 
@@ -574,53 +556,43 @@ export default class RadioheadLooper extends React.Component {
 
     this.state = {
       rhSynth,
-      // rhSynth2,
-      // rhSynth3,
-      // rhSynth4,
-      // rhSynth5,
-      // rhSynth6,
-      // rhSynth7,
       gain,
       part1: {
         part: part1,
-        on: false
+        on: false,
       },
       part2: {
         part: part2,
-        on: false
+        on: false,
       },
       part3: {
         part: part3,
-        on: false
+        on: false,
       },
       part4: {
         part: part4,
-        on: false
+        on: false,
       },
       part5: {
         part: part5,
-        on: false
+        on: false,
       },
-      bpm: 120
+      bpm: 120,
     };
   }
 
   handleVolume = (a, b, value) => {
     let { gain } = this.state;
     let volume = value;
-    console.log("old", gain.gain.value);
-    console.log("comming vol", volume);
     gain.gain.value = volume;
-    console.log("new", gain.gain.value);
     this.setState({
-      gain
+      gain,
     });
   };
 
-  // LOOP
-
   toggleRh1 = () => {
     let { part1 } = this.state;
+    const { toggleBack } = this.props;
     let { on, part } = part1;
 
     on ? part1.part.stop() : part1.part.start();
@@ -628,12 +600,14 @@ export default class RadioheadLooper extends React.Component {
     this.setState({
       part1: {
         part,
-        on: !on
-      }
+        on: !on,
+      },
     });
 
     Tone.Transport.bpm.value = this.props.bpm;
     Tone.Transport.start();
+
+    toggleBack();
   };
 
   toggleRh2 = () => {
@@ -645,8 +619,8 @@ export default class RadioheadLooper extends React.Component {
     this.setState({
       part2: {
         part,
-        on: !on
-      }
+        on: !on,
+      },
     });
 
     Tone.Transport.bpm.value = this.props.bpm;
@@ -662,8 +636,8 @@ export default class RadioheadLooper extends React.Component {
     this.setState({
       part3: {
         part,
-        on: !on
-      }
+        on: !on,
+      },
     });
 
     Tone.Transport.bpm.value = this.props.bpm;
@@ -679,8 +653,8 @@ export default class RadioheadLooper extends React.Component {
     this.setState({
       part4: {
         part,
-        on: !on
-      }
+        on: !on,
+      },
     });
 
     Tone.Transport.bpm.value = this.props.bpm;
@@ -696,8 +670,8 @@ export default class RadioheadLooper extends React.Component {
     this.setState({
       part5: {
         part,
-        on: !on
-      }
+        on: !on,
+      },
     });
 
     Tone.Transport.bpm.value = this.props.bpm;
@@ -710,14 +684,16 @@ export default class RadioheadLooper extends React.Component {
       <div className="rhSynth">
         <div className="rhLoops">
           <div className="mainControls">
-            <BpmSlider
-              min="0"
-              max="220"
-              value={this.props.bpm}
-              handleValueChange={this.props.bpmChange}
-            />
-            TEMPO: {this.props.bpm}
-            <div className="volume">
+            <div className="bpm contol">
+              <h2>TEMPO: {this.props.bpm}</h2>
+              <BpmSlider
+                min="0"
+                max="220"
+                value={this.props.bpm}
+                handleValueChange={this.props.bpmChange}
+              />
+            </div>
+            <div className="volume control">
               <h2>Volume</h2>
               <Slider
                 name="vol"
@@ -729,17 +705,22 @@ export default class RadioheadLooper extends React.Component {
             </div>
           </div>
 
-          <div className="playSynth">
-            <h2>Part 1</h2>
-            <PlaySwitch
-              name="play"
-              value={part1.on}
-              handleToggleClick={this.toggleRh1}
-            />
-          </div>
-
           <div className="loops">
-            <div className="loop loop1">
+            <div className="playSynth">
+              {/* <h2>Part 1</h2> */}
+              <PlaySwitch
+                name="play"
+                value={part1.on}
+                handleToggleClick={this.toggleRh1}
+              />
+            </div>
+            <div className="lyrics">
+              <p>
+                We got heads on sticks And you got them toothpicks We got heads
+                on sticks But you go in circles
+              </p>
+            </div>
+            {/* <div className="loop loop1">
               <h2>Part 2</h2>
               <PlaySwitch
                 name="play"
@@ -770,7 +751,7 @@ export default class RadioheadLooper extends React.Component {
                 value={part5.on}
                 handleToggleClick={this.toggleRh5}
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

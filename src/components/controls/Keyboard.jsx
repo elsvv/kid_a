@@ -1,8 +1,4 @@
-import Tone from "tone";
-import classnames from "classnames";
 import React from "react";
-
-import "./Keyboard.scss";
 
 import Octaves from "./Octaves";
 import ButtonSet from "./ButtonSet";
@@ -17,19 +13,15 @@ export default class Keyboard extends React.Component {
     this.state = {
       notes: ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"],
       playKeys: ["a", "w", "s", "e", "d", "f", "t", "g", "y", "h", "u", "j"],
-      octave: 3
+      octave: 3,
     };
-
-    this.changeOct = this.changeOct.bind(this);
   }
 
-  changeOct(e) {
-    console.log("e", e.target.value);
+  changeOct = (e) => {
     this.setState({
-      octave: e.target.value
+      octave: e.target.value,
     });
-    console.log("state", this.state.octave);
-  }
+  };
 
   render() {
     const set = [
@@ -38,36 +30,28 @@ export default class Keyboard extends React.Component {
       "triangle",
       "triangle8",
       "square",
-      "sawtooth"
+      "sawtooth",
     ];
-    let {
+    const {
       handleMouseUp,
       handleMouseDown,
       name,
       changeWaveType,
       typeValue,
       currentNote,
-      valueVol,
-      handleValueChange,
-      min,
-      max
     } = this.props;
-    let { notes, playKeys, octave } = this.state;
-    let keys = [];
-
-    notes.map((note, i) => {
-      keys.push(
-        <Key
-          octave={octave}
-          note={note}
-          key={i}
-          playKey={playKeys[i]}
-          currentNote={currentNote}
-          handleMouseUp={handleMouseUp}
-          handleMouseDown={handleMouseDown}
-        />
-      );
-    });
+    const { notes, playKeys, octave } = this.state;
+    const keys = notes.map((note, i) => (
+      <Key
+        octave={octave}
+        note={note}
+        key={i}
+        playKey={playKeys[i]}
+        currentNote={currentNote}
+        handleMouseUp={handleMouseUp}
+        handleMouseDown={handleMouseDown}
+      />
+    ));
 
     return (
       <div className="keySynth">

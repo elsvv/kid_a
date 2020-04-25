@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
-export default ({ current, items, names, handler, name, paramName }) => {
-  let itemClass = 'pickerItem' + items.length
+export default ({ current, items, names, handler }) => {
+  const itemClass = "pickerItem" + items.length;
   return (
     <div className="pickerWrapper col ButtonSet">
       {items.map((value, n) => {
@@ -9,16 +9,16 @@ export default ({ current, items, names, handler, name, paramName }) => {
           <div
             key={value}
             className={
-              current == value
-                ? itemClass + ' on Button'
-                : itemClass + ' Button'
+              current === value
+                ? itemClass + " on Button"
+                : itemClass + " Button"
             }
             onClick={() => handler(value)}
           >
             {names[n]}
           </div>
-        )
+        );
       })}
     </div>
-  )
-}
+  );
+};

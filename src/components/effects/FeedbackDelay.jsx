@@ -1,41 +1,21 @@
 import React from "react";
-import _ from "lodash";
-
-import "./Effect.scss";
-
 import ToggleSwitch from "../controls/ToggleSwitch";
 import Knob from "../controls/Knob";
 import Picker from "../controls/Picker";
 
-export default class FeedbackDelay extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+export default ({ on, toggleEffect, value, handler }) => {
+  return (
+    <div className="Effect">
+      <h1>Feedback Delay</h1>
 
-  render() {
-    const {
-      name,
-      effect,
-      on,
-      wet,
-      toggleEffect,
-      changeEffectWetValue,
-      changeEffectValue
-    } = this.props;
+      <ToggleSwitch
+        value="feedbackDelay"
+        current={on}
+        handleClick={toggleEffect}
+      />
 
-    let value = this.props.value;
-
-    return (
-      <div className="Effect">
-        <h1>Feedback Delay</h1>
-
-        <ToggleSwitch
-          value="feedbackDelay"
-          current={on}
-          handleClick={toggleEffect}
-        />
-
-        <div className="controlsContainer">
+      <div className="controlsContainer">
+        <div className="row">
           <Knob
             name="feedbackDelay"
             paramName="wet"
@@ -45,7 +25,7 @@ export default class FeedbackDelay extends React.Component {
             initialDeg={-45}
             overDeg={270}
             value={value.wet.value}
-            handleValueChange={this.props.handler}
+            handleValueChange={handler}
           />
           <Knob
             name="feedbackDelay"
@@ -56,10 +36,10 @@ export default class FeedbackDelay extends React.Component {
             initialDeg={-45}
             overDeg={270}
             value={value.delayTime.value}
-            handleValueChange={this.props.handler}
+            handleValueChange={handler}
           />
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};

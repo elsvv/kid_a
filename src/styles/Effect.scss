@@ -1,0 +1,37 @@
+.Effect {
+  width: 290px;
+  border-right: 1px solid #000;
+  padding: 10px;
+
+  .Knob {
+    position: relative;
+    bottom: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 21px;
+    font-size: 15px;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 21px;
+    font-size: 13px;
+  }
+
+  .controlsContainer {
+    .KnobWrapper {
+      width: 60px;
+      .Knob {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+
+  .sliderContainer {
+    height: 30px;
+    margin: 15px 0 0px;
+  }
+}

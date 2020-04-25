@@ -1,32 +1,20 @@
-import _ from "lodash";
 import React from "react";
-
-import "./Knob.scss";
 
 export default class Knob extends React.Component {
   constructor(props) {
     super(props);
 
-    let value = this.props.increment * this.props.increment;
+    const value = this.props.increment * this.props.increment;
 
     this.state = {
       mouseDown: false,
       name: this.props.paramName
-        .replace(/^\w/, c => c.toUpperCase())
+        .replace(/^\w/, (c) => c.toUpperCase())
         .slice(0, 8),
       value: value,
       deg: this.props.initialDeg,
-      screenY: 0
+      screenY: 0,
     };
-
-    _.bindAll(
-      this,
-      "handleMouseDown",
-      "handleMouseMove",
-      "handleMouseUp",
-      "moveKnob",
-      "calculateDeg"
-    );
   }
 
   componentDidMount() {
@@ -37,50 +25,48 @@ export default class Knob extends React.Component {
       mouseDown: false,
       value: value,
       deg: this.props.initialDeg + deg,
-      screenY: 0
+      screenY: 0,
     });
 
     document.addEventListener("mouseup", this.handleMouseUp);
     document.addEventListener("mousemove", this.handleMouseMove);
   }
 
-  handleMouseDown(e) {
+  handleMouseDown = (e) => {
     e.preventDefault();
 
     this.setState({
       mouseDown: true,
-      screenY: e.clientX
+      screenY: e.clientX,
     });
-  }
+  };
 
-  handleMouseMove(e) {
+  handleMouseMove = (e) => {
     const { mouseDown } = this.state;
 
     if (mouseDown) {
       this.moveKnob(e.clientX);
 
       this.setState({
-        name: (this.state.value / this.props.increment).toFixed(2)
+        name: (this.state.value / this.props.increment).toFixed(2),
       });
     }
-  }
+  };
 
-  handleMouseUp() {
+  handleMouseUp = () => {
     const { name, handleMouseUp } = this.props;
 
     if (this.state.mouseDown) {
-      // handleMouseUp(name)
-
       this.setState({
         mouseDown: false,
         name: this.props.paramName
-          .replace(/^\w/, c => c.toUpperCase())
-          .slice(0, 8)
+          .replace(/^\w/, (c) => c.toUpperCase())
+          .slice(0, 8),
       });
     }
-  }
+  };
 
-  moveKnob(screenY) {
+  moveKnob = (screenY) => {
     const min = parseInt(this.props.min);
     const max = parseInt(this.props.max);
     const oldScreenY = this.state.screenY;
@@ -106,22 +92,22 @@ export default class Knob extends React.Component {
     this.setState({
       screenY: screenY,
       value: value,
-      deg: this.props.initialDeg + this.calculateDeg(value)
+      deg: this.props.initialDeg + this.calculateDeg(value),
     });
-  }
+  };
 
-  calculateDeg(value) {
+  calculateDeg = (value) => {
     const { max } = this.props;
     const coef = this.props.overDeg / max;
     const deg = value * coef;
 
     return deg;
-  }
+  };
 
   render() {
     const { deg } = this.state;
     const style = {
-      transform: `rotate(${deg}deg)`
+      transform: `rotate(${deg}deg)`,
     };
 
     return (

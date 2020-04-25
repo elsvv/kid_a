@@ -1,7 +1,4 @@
-import _ from "lodash";
 import React from "react";
-
-import "./Slider.scss";
 
 export default class Slider extends React.Component {
   constructor(props) {
@@ -12,24 +9,14 @@ export default class Slider extends React.Component {
       area: {
         left: 0,
         right: 0,
-        width: 0
+        width: 0,
       },
       thumb: {
-        left: 0
-      }
+        left: 0,
+      },
     };
 
     this.slideArea = React.createRef();
-
-    _.bindAll(
-      this,
-      "handleMouseMove",
-      "handleMouseDown",
-      "handleMouseUp",
-      "moveThumb",
-      "calculateLeft",
-      "calculateValue"
-    );
   }
 
   componentDidMount() {
@@ -39,64 +26,56 @@ export default class Slider extends React.Component {
       area: {
         left: x,
         right: x + width,
-        width: width
+        width: width,
       },
       thumb: {
-        left: this.calculateLeft(width)
-      }
+        left: this.calculateLeft(width),
+      },
     });
 
     document.addEventListener("mouseup", this.handleMouseUp);
     document.addEventListener("mousemove", this.handleMouseMove);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate = (nextProps, nextState) => {
     const { width } = this.state.area;
-    // console.log(nextProps.value)
-    // console.log(nextState)
-    // if (nextState.thumb.left == this.state.thumb.left) {
-    if (nextProps.value != this.props.value) {
-      // console.log('true')
+    if (nextProps.value !== this.props.value) {
       nextState.thumb.left = this.calculateLeft(width);
     }
 
     return true;
-  }
+  };
 
-  handleDragOver(e) {
+  handleDragOver = (e) => {
     e.preventDefault();
-  }
+  };
 
-  handleMouseDown(e) {
+  handleMouseDown = (e) => {
     e.preventDefault();
 
     this.setState({
-      mouseDown: true
+      mouseDown: true,
     });
-  }
+  };
 
-  handleMouseUp() {
-    const { name, handleMouseUp } = this.props;
-
+  handleMouseUp = () => {
     if (this.state.mouseDown) {
-      // handleMouseUp(name)
-
       this.setState({
-        mouseDown: false
+        mouseDown: false,
       });
     }
-  }
+  };
 
-  handleMouseMove(e) {
+  handleMouseMove = (e) => {
     const { mouseDown } = this.state;
 
     if (mouseDown) {
       this.moveThumb(e.screenX);
     }
-  }
+  };
 
-  moveThumb(screenX) {
-    const { name, property, min, max, handleValueChange } = this.props;
+  moveThumb = (screenX) => {
+    const { name, property, handleValueChange } = this.props;
     const areaLeft = this.state.area.left;
     const areaRight = this.state.area.right;
     const thumbLeft = screenX - areaLeft;
@@ -108,22 +87,22 @@ export default class Slider extends React.Component {
 
       this.setState({
         thumb: {
-          left: thumbLeft - 15
-        }
+          left: thumbLeft - 15,
+        },
       });
     }
-  }
+  };
 
-  calculateLeft(width) {
+  calculateLeft = (width) => {
     const { min, max, value } = this.props;
     const range = max - min;
     const coef = range / width;
     const left = value / coef;
 
     return left;
-  }
+  };
 
-  calculateValue(thumbLeft) {
+  calculateValue = (thumbLeft) => {
     const { min, max } = this.props;
     const { width } = this.state.area;
     const range = max - min;
@@ -131,13 +110,13 @@ export default class Slider extends React.Component {
     const value = thumbLeft * coef;
 
     return value;
-  }
+  };
 
   render() {
     const { left } = this.state.thumb;
 
     const style = {
-      transform: `translate(${left}px, -15px)`
+      transform: `translateX(${left}px)`,
     };
 
     return (

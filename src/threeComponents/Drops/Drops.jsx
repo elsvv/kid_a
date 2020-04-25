@@ -10,7 +10,7 @@ class Drops extends Component {
   }
 
   dropsInit = async () => {
-    var container1, camera, scene, renderer, effect;
+    var camera, scene, renderer, effect;
 
     var spheres = [];
 
@@ -23,7 +23,6 @@ class Drops extends Component {
     document.addEventListener("mousemove", onDocumentMouseMove, false);
 
     init();
-    // animate();
 
     async function init() {
       let container = document.getElementById("drops");
@@ -38,8 +37,7 @@ class Drops extends Component {
       camera.focalLength = 3;
       //
       // var path = "drops/walter/walter-";
-      var path =
-        "/Users/vaceslaveliseev/@dev/kid_a/src/threeComponents/kid_a/kid_a-";
+      var path = "./kid_a/kid_a-";
       var format = ".png";
       var urls = [
         path + "px" + format,
@@ -47,7 +45,7 @@ class Drops extends Component {
         path + "py" + format,
         path + "ny" + format,
         path + "pz" + format,
-        path + "nz" + format
+        path + "nz" + format,
       ];
 
       var textureCube = await new THREE.CubeTextureLoader().load(urls);
@@ -55,25 +53,15 @@ class Drops extends Component {
 
       scene = new THREE.Scene();
 
-      // scene.background = new THREE.Color("rgb(30, 37, 30)");
       scene.background = textureCube;
-      // const texture = new THREE.TextureLoader().load("./drops/walter/hse.png");
-
-      // var textureDrop = new THREE.TextureLoader().load("../kid_a/mouse.png");
-      // console.log("textureDrop", textureDrop);
 
       var geometry = new THREE.SphereBufferGeometry(0.1, 32, 16);
 
       var material = new THREE.MeshBasicMaterial({
-        color: 0xffffff
-        // ,        map: textureDrop
+        color: 0xffffff,
       });
-      // var material = new THREE.MeshBasicMaterial({
-      //   color: 0xffffff,
-      //   envMap: textureCube
-      // });
 
-      for (var i = 0; i < 1000; i++) {
+      for (var i = 0; i < 150; i++) {
         var mesh = new THREE.Mesh(geometry, material);
 
         mesh.position.x = Math.random() * 10 - 5;
@@ -118,7 +106,7 @@ class Drops extends Component {
 
     function onDocumentMouseMove(event) {
       mouseX = (event.clientX - windowHalfX) / 100;
-      mouseY = (event.clientY - windowHalfY) / 100;
+      mouseY = (event.clientY - windowHalfY) / 1000;
     }
 
     //
